@@ -1,0 +1,19 @@
+# Jekyll build artifacts
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# System files
+Thumbs.db
+.DS_Store
+
+# Node or tooling caches
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python caches (if labs are added later)
+__pycache__/
+*.pyc

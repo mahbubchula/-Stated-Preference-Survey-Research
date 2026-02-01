@@ -1,0 +1,11 @@
+title: "Stated Preference Survey Research"
+email: "mahbub.hassan@ieee.org"
+description: >
+  Course site for Mahbub Hassan's Stated Preference Survey Research for Transportation program
+  (Department of Civil Engineering, Faculty of Engineering, Chulalongkorn University).
+baseurl: ""
+url: "https://mahbubchula.github.io/-Stated-Preference-Survey-Research"
+theme: minima
+github_username: mahbubchula
+plugins:
+  - jekyll-feed
