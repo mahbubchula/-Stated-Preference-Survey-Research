@@ -1,0 +1,99 @@
+; =================================================================
+; Example Ngene Design Script for SP Survey
+; Stated Preference Survey Research Course
+; Author: Mahbub Hassan
+; =================================================================
+;
+; This design creates an efficient choice experiment for
+; evaluating mode choice preferences with 3 alternatives
+;
+; =================================================================
+
+Design
+;alts = car, transit, bike
+;rows = 24
+;block = 3
+;eff = (mnl,d)
+;con
+;model:
+  U(car) = b1[n,-0.05,-0.01] * cost[5,10,15,20]
+         + b2[n,-0.03,-0.005] * time[15,25,35,45]
+         + b3.dummy[(n,-0.5,-0.2)|(n,-1,-0.3)] * comfort[0,1,2] /
+  U(transit) = b0[n,-0.8,-0.2]
+             + b1 * cost
+             + b2 * time
+             + b3 * comfort /
+  U(bike) = b4[n,-1.5,-0.5]
+          + b1 * cost
+          + b2 * time
+          + b3 * comfort
+$
+
+; =================================================================
+; DESIGN EXPLANATION:
+; =================================================================
+;
+; ALTERNATIVES (alts):
+;   - car: Private automobile
+;   - transit: Public transportation
+;   - bike: Bicycle
+;
+; DESIGN PARAMETERS:
+;   - rows: 24 choice situations
+;   - block: 3 blocks (8 choice tasks per respondent)
+;   - eff: D-efficiency for MNL model
+;
+; ATTRIBUTES:
+;   - cost: Travel cost in $ [5, 10, 15, 20]
+;   - time: Travel time in minutes [15, 25, 35, 45]
+;   - comfort: Comfort level (0=low, 1=medium, 2=high)
+;
+; PRIORS:
+;   - b1 (cost): Normal distribution, mean=-0.05, std=0.01
+;   - b2 (time): Normal distribution, mean=-0.03, std=0.005
+;   - b3 (comfort): Normal, dummy coded
+;   - b0 (transit ASC): Normal distribution, mean=-0.8, std=0.2
+;   - b4 (bike ASC): Normal distribution, mean=-1.5, std=0.5
+;
+; =================================================================
+
+; Alternative Design with Constraints
+; =================================================================
+
+;Design
+;alts = mode1, mode2, mode3
+;rows = 18
+;block = 2
+;eff = (mnl,d,median)
+;con:
+;  if(mode1.cost=5, mode1.time<>45),
+;  if(mode2.cost=20, mode2.time<>15)
+;require:
+;  mode1.cost < mode2.cost,
+;  mode1.time <= mode2.time
+;model:
+;  U(mode1) = b1[n,-0.05,-0.01] * cost[5,10,15,20]
+;           + b2[n,-0.03,-0.005] * time[15,25,35,45] /
+;  U(mode2) = b0[n,-0.5,-0.1]
+;           + b1 * cost
+;           + b2 * time /
+;  U(mode3) = b1 * cost
+;           + b2 * time
+;$
+
+; =================================================================
+; NOTES FOR STUDENTS:
+; =================================================================
+; 1. Save this file as "design.ngd"
+; 2. Open in Ngene software
+; 3. Click "Run" to generate design
+; 4. Review D-error and balance statistics
+; 5. Export design to CSV for survey platform
+; 6. Check correlation matrix to ensure orthogonality
+;
+; Expected Output:
+;   - D-error: <0.1 (excellent)
+;   - Design file: design_final.csv
+;   - 24 rows with 3 blocks
+;
+; =================================================================
