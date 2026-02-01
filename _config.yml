@@ -6,8 +6,8 @@ description: >
   Mahbub Hassan, Non Asean Scholar, Department of Civil Engineering, Faculty of Engineering,
   Chulalongkorn University, Bangkok, Thailand. Learn survey design, experimental methods,
   discrete choice modeling, and policy communication.
-baseurl: ""
-url: "https://mahbubchula.github.io/-Stated-Preference-Survey-Research"
+baseurl: "/-Stated-Preference-Survey-Research"
+url: "https://mahbubchula.github.io"
 theme: minima
 github_username: mahbubchula
 
@@ -47,3 +47,4 @@ exclude:
   - LICENSE
   - Gemfile
   - Gemfile.lock
+
